@@ -4,6 +4,25 @@ export default {
   theme: {
     extend: {
       colors: {
+        primos: {
+          red: '#DC2626', // Vibrant red for headers and prices
+          darkRed: '#B91C1C', // Darker red for hover states
+          black: '#000000', // Pure black for text
+          white: '#FFFFFF', // Pure white for backgrounds
+          gray: {
+            50: '#F9FAFB',
+            100: '#F3F4F6',
+            200: '#E5E7EB',
+            300: '#D1D5DB',
+            400: '#9CA3AF',
+            500: '#6B7280',
+            600: '#4B5563',
+            700: '#374151',
+            800: '#1F2937',
+            900: '#111827',
+          }
+        },
+        // Keep old colors for admin panel
         ramen: {
           red: '#D7263D',
           dark: '#0B0A0A',
@@ -17,8 +36,8 @@ export default {
         }
       },
       fontFamily: {
-        'pretendard': ['Pretendard', 'system-ui', 'sans-serif'],
-        'noto-kr': ['Noto Serif KR', 'serif']
+        'sans': ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        'display': ['Poppins', 'system-ui', 'sans-serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',

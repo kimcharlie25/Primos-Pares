@@ -60,7 +60,7 @@ const Checkout: React.FC<CheckoutProps> = ({ cartItems, totalPrice, onBack }) =>
       : '';
     
     const orderDetails = `
-🛒 ClickEats ORDER
+🛒 Primos' Pares ORDER
 
 👤 Customer: ${customerName}
 📞 Contact: ${contactNumber}
@@ -95,11 +95,11 @@ ${serviceType === 'delivery' ? `🛵 DELIVERY FEE:` : ''}
 
 ${notes ? `📝 Notes: ${notes}` : ''}
 
-Please confirm this order to proceed. Thank you for choosing ClickEats! 🥟
+Please confirm this order to proceed. Thank you for choosing Primos' Pares ! 🥟
     `.trim();
 
     const encodedMessage = encodeURIComponent(orderDetails);
-    const messengerUrl = `https://m.me/61579693577478?text=${encodedMessage}`;
+    const messengerUrl = `https://m.me/PrimosPares.Leg?text=${encodedMessage}`;
     
     window.open(messengerUrl, '_blank');
     
@@ -112,76 +112,76 @@ Please confirm this order to proceed. Thank you for choosing ClickEats! 🥟
 
   if (step === 'details') {
     return (
-      <div className="max-w-4xl mx-auto px-4 py-8">
-        <div className="flex items-center mb-8">
+      <div className="max-w-6xl mx-auto px-4 py-8 bg-white min-h-screen">
+        <div className="flex items-center mb-10">
           <button
             onClick={onBack}
-            className="flex items-center space-x-2 text-gray-600 hover:text-black transition-colors duration-200"
+            className="flex items-center space-x-2 text-primos-black hover:text-primos-red transition-colors duration-200 font-bold"
           >
-            <ArrowLeft className="h-5 w-5" />
-            <span>Back to Cart</span>
+            <ArrowLeft className="h-6 w-6" />
+            <span>BACK TO CART</span>
           </button>
-          <h1 className="text-3xl font-noto font-semibold text-black ml-8">Order Details</h1>
+          <h1 className="text-4xl font-display font-bold text-primos-red ml-8">ORDER DETAILS</h1>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Order Summary */}
-          <div className="bg-white rounded-xl shadow-sm p-6">
-            <h2 className="text-2xl font-noto font-medium text-black mb-6">Order Summary</h2>
+          <div className="bg-white rounded-xl shadow-xl border-2 border-primos-gray-200 p-8">
+            <h2 className="text-3xl font-display font-bold text-primos-black mb-6 pb-4 border-b-4 border-primos-red">Order Summary</h2>
             
             <div className="space-y-4 mb-6">
               {cartItems.map((item) => (
-                <div key={item.id} className="flex items-center justify-between py-2 border-b border-red-100">
+                <div key={item.id} className="flex items-center justify-between py-3 border-b-2 border-primos-gray-200">
                   <div>
-                    <h4 className="font-medium text-black">{item.name}</h4>
+                    <h4 className="font-bold text-primos-black text-lg">{item.name}</h4>
                     {item.selectedVariation && (
-                      <p className="text-sm text-gray-600">Size: {item.selectedVariation.name}</p>
+                      <p className="text-sm font-semibold text-primos-gray-600">Size: {item.selectedVariation.name}</p>
                     )}
                     {item.selectedAddOns && item.selectedAddOns.length > 0 && (
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm font-semibold text-primos-gray-600">
                         Add-ons: {item.selectedAddOns.map(addOn => addOn.name).join(', ')}
                       </p>
                     )}
-                    <p className="text-sm text-gray-600">₱{item.totalPrice} x {item.quantity}</p>
+                    <p className="text-sm font-semibold text-primos-gray-600">₱{item.totalPrice} x {item.quantity}</p>
                   </div>
-                  <span className="font-semibold text-black">₱{item.totalPrice * item.quantity}</span>
+                  <span className="font-black text-primos-red text-xl">₱{item.totalPrice * item.quantity}</span>
                 </div>
               ))}
             </div>
             
-            <div className="border-t border-red-200 pt-4">
-              <div className="flex items-center justify-between text-2xl font-noto font-semibold text-black">
-                <span>Total:</span>
-                <span>₱{totalPrice}</span>
+            <div className="border-t-4 border-primos-red pt-6">
+              <div className="flex items-center justify-between text-3xl font-black">
+                <span className="text-primos-black">TOTAL:</span>
+                <span className="text-primos-red">₱{totalPrice}</span>
               </div>
             </div>
           </div>
 
           {/* Customer Details Form */}
-          <div className="bg-white rounded-xl shadow-sm p-6">
-            <h2 className="text-2xl font-noto font-medium text-black mb-6">Customer Information</h2>
+          <div className="bg-white rounded-xl shadow-xl border-2 border-primos-gray-200 p-8">
+            <h2 className="text-3xl font-display font-bold text-primos-black mb-6 pb-4 border-b-4 border-primos-red">Customer Information</h2>
             
             <form className="space-y-6">
               {/* Customer Information */}
               <div>
-                <label className="block text-sm font-medium text-black mb-2">Full Name *</label>
+                <label className="block text-sm font-bold text-primos-black mb-2 uppercase">Full Name *</label>
                 <input
                   type="text"
                   value={customerName}
                   onChange={(e) => setCustomerName(e.target.value)}
-                  className="w-full px-4 py-3 border border-red-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200"
+                  className="w-full px-4 py-3 border-2 border-primos-gray-300 rounded-lg focus:ring-2 focus:ring-primos-red focus:border-primos-red transition-all duration-200 font-medium"
                   placeholder="Enter your full name"
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-black mb-2">Contact Number *</label>
+                <label className="block text-sm font-bold text-primos-black mb-2 uppercase">Contact Number *</label>
                 <input
                   type="tel"
                   value={contactNumber}
                   onChange={(e) => setContactNumber(e.target.value)}
-                  className="w-full px-4 py-3 border border-red-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200"
+                  className="w-full px-4 py-3 border-2 border-primos-gray-300 rounded-lg focus:ring-2 focus:ring-primos-red focus:border-primos-red transition-all duration-200 font-medium"
                   placeholder="09XX XXX XXXX"
                   required
                 />
@@ -189,7 +189,7 @@ Please confirm this order to proceed. Thank you for choosing ClickEats! 🥟
 
               {/* Service Type */}
               <div>
-                <label className="block text-sm font-medium text-black mb-3">Service Type *</label>
+                <label className="block text-sm font-bold text-primos-black mb-3 uppercase">Service Type *</label>
                 <div className="grid grid-cols-3 gap-3">
                   {[
                     { value: 'dine-in', label: 'Dine In', icon: '🪑' },
@@ -202,12 +202,12 @@ Please confirm this order to proceed. Thank you for choosing ClickEats! 🥟
                       onClick={() => setServiceType(option.value as ServiceType)}
                       className={`p-4 rounded-lg border-2 transition-all duration-200 ${
                         serviceType === option.value
-                          ? 'border-red-600 bg-red-600 text-white'
-                          : 'border-red-300 bg-white text-gray-700 hover:border-red-400'
+                          ? 'border-primos-red bg-primos-red text-white shadow-lg'
+                          : 'border-primos-gray-300 bg-white text-primos-black hover:border-primos-red'
                       }`}
                     >
-                      <div className="text-2xl mb-1">{option.icon}</div>
-                      <div className="text-sm font-medium">{option.label}</div>
+                      <div className="text-3xl mb-1">{option.icon}</div>
+                      <div className="text-sm font-bold">{option.label}</div>
                     </button>
                   ))}
                 </div>
@@ -298,11 +298,11 @@ Please confirm this order to proceed. Thank you for choosing ClickEats! 🥟
               {serviceType === 'delivery' && (
                 <>
                   <div>
-                    <label className="block text-sm font-medium text-black mb-2">Delivery Address *</label>
+                    <label className="block text-sm font-bold text-primos-black mb-2 uppercase">Delivery Address *</label>
                     <textarea
                       value={address}
                       onChange={(e) => setAddress(e.target.value)}
-                      className="w-full px-4 py-3 border border-red-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200"
+                      className="w-full px-4 py-3 border-2 border-primos-gray-300 rounded-lg focus:ring-2 focus:ring-primos-red focus:border-primos-red transition-all duration-200 font-medium"
                       placeholder="Enter your complete delivery address"
                       rows={3}
                       required
@@ -310,12 +310,12 @@ Please confirm this order to proceed. Thank you for choosing ClickEats! 🥟
                   </div>
                   
                   <div>
-                    <label className="block text-sm font-medium text-black mb-2">Landmark</label>
+                    <label className="block text-sm font-bold text-primos-black mb-2 uppercase">Landmark</label>
                     <input
                       type="text"
                       value={landmark}
                       onChange={(e) => setLandmark(e.target.value)}
-                      className="w-full px-4 py-3 border border-red-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200"
+                      className="w-full px-4 py-3 border-2 border-primos-gray-300 rounded-lg focus:ring-2 focus:ring-primos-red focus:border-primos-red transition-all duration-200 font-medium"
                       placeholder="e.g., Near McDonald's, Beside 7-Eleven, In front of school"
                     />
                   </div>
@@ -324,11 +324,11 @@ Please confirm this order to proceed. Thank you for choosing ClickEats! 🥟
 
               {/* Special Notes */}
               <div>
-                <label className="block text-sm font-medium text-black mb-2">Special Instructions</label>
+                <label className="block text-sm font-bold text-primos-black mb-2 uppercase">Special Instructions</label>
                 <textarea
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
-                  className="w-full px-4 py-3 border border-red-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200"
+                  className="w-full px-4 py-3 border-2 border-primos-gray-300 rounded-lg focus:ring-2 focus:ring-primos-red focus:border-primos-red transition-all duration-200 font-medium"
                   placeholder="Any special requests or notes..."
                   rows={3}
                 />
@@ -337,13 +337,13 @@ Please confirm this order to proceed. Thank you for choosing ClickEats! 🥟
               <button
                 onClick={handleProceedToPayment}
                 disabled={!isDetailsValid}
-                className={`w-full py-4 rounded-xl font-medium text-lg transition-all duration-200 transform ${
+                className={`w-full py-5 rounded-lg font-bold text-xl transition-all duration-200 transform shadow-xl ${
                   isDetailsValid
-                    ? 'bg-red-600 text-white hover:bg-red-700 hover:scale-[1.02]'
-                    : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+                    ? 'bg-primos-red text-white hover:bg-primos-darkRed hover:scale-[1.02]'
+                    : 'bg-primos-gray-300 text-primos-gray-500 cursor-not-allowed'
                 }`}
               >
-                Proceed to Payment
+                PROCEED TO PAYMENT
               </button>
             </form>
           </div>
@@ -354,22 +354,22 @@ Please confirm this order to proceed. Thank you for choosing ClickEats! 🥟
 
   // Payment Step
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
-      <div className="flex items-center mb-8">
+    <div className="max-w-6xl mx-auto px-4 py-8 bg-white min-h-screen">
+      <div className="flex items-center mb-10">
         <button
           onClick={() => setStep('details')}
-          className="flex items-center space-x-2 text-gray-600 hover:text-black transition-colors duration-200"
+          className="flex items-center space-x-2 text-primos-black hover:text-primos-red transition-colors duration-200 font-bold"
         >
-          <ArrowLeft className="h-5 w-5" />
-          <span>Back to Details</span>
+          <ArrowLeft className="h-6 w-6" />
+          <span>BACK TO DETAILS</span>
         </button>
-        <h1 className="text-3xl font-noto font-semibold text-black ml-8">Payment</h1>
+        <h1 className="text-4xl font-display font-bold text-primos-red ml-8">PAYMENT</h1>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Payment Method Selection */}
-        <div className="bg-white rounded-xl shadow-sm p-6">
-          <h2 className="text-2xl font-noto font-medium text-black mb-6">Choose Payment Method</h2>
+        <div className="bg-white rounded-xl shadow-xl border-2 border-primos-gray-200 p-8">
+          <h2 className="text-3xl font-display font-bold text-primos-black mb-6 pb-4 border-b-4 border-primos-red">Choose Payment Method</h2>
           
           <div className="grid grid-cols-1 gap-4 mb-6">
             {paymentMethods.map((method) => (
@@ -377,80 +377,80 @@ Please confirm this order to proceed. Thank you for choosing ClickEats! 🥟
                 key={method.id}
                 type="button"
                 onClick={() => setPaymentMethod(method.id as PaymentMethod)}
-                className={`p-4 rounded-lg border-2 transition-all duration-200 flex items-center space-x-3 ${
+                className={`p-5 rounded-lg border-2 transition-all duration-200 flex items-center space-x-4 shadow-lg ${
                   paymentMethod === method.id
-                    ? 'border-red-600 bg-red-600 text-white'
-                    : 'border-red-300 bg-white text-gray-700 hover:border-red-400'
+                    ? 'border-primos-red bg-primos-red text-white'
+                    : 'border-primos-gray-300 bg-white text-primos-black hover:border-primos-red'
                 }`}
               >
-                <span className="text-2xl">💳</span>
-                <span className="font-medium">{method.name}</span>
+                <span className="text-3xl">💳</span>
+                <span className="font-bold text-lg">{method.name}</span>
               </button>
             ))}
           </div>
 
           {/* Payment Details with QR Code */}
           {selectedPaymentMethod && (
-            <div className="bg-red-50 rounded-lg p-6 mb-6">
-              <h3 className="font-medium text-black mb-4">Payment Details</h3>
+            <div className="bg-red-50 border-2 border-primos-red rounded-lg p-6 mb-6">
+              <h3 className="font-bold text-primos-black mb-4 text-lg">Payment Details</h3>
               <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                 <div className="flex-1">
-                  <p className="text-sm text-gray-600 mb-1">{selectedPaymentMethod.name}</p>
-                  <p className="font-mono text-black font-medium">{selectedPaymentMethod.account_number}</p>
-                  <p className="text-sm text-gray-600 mb-3">Account Name: {selectedPaymentMethod.account_name}</p>
-                  <p className="text-xl font-semibold text-black">Amount: ₱{totalPrice}</p>
+                  <p className="text-sm font-semibold text-primos-gray-600 mb-1">{selectedPaymentMethod.name}</p>
+                  <p className="font-mono text-primos-black font-black text-lg">{selectedPaymentMethod.account_number}</p>
+                  <p className="text-sm font-semibold text-primos-gray-600 mb-3">Account Name: {selectedPaymentMethod.account_name}</p>
+                  <p className="text-2xl font-black text-primos-red">Amount: ₱{totalPrice}</p>
                 </div>
                 <div className="flex-shrink-0">
                   <img 
                     src={selectedPaymentMethod.qr_code_url} 
                     alt={`${selectedPaymentMethod.name} QR Code`}
-                    className="w-32 h-32 rounded-lg border-2 border-red-300 shadow-sm"
+                    className="w-40 h-40 rounded-lg border-4 border-primos-red shadow-xl"
                     onError={(e) => {
                       e.currentTarget.src = 'https://images.pexels.com/photos/8867482/pexels-photo-8867482.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop';
                     }}
                   />
-                  <p className="text-xs text-gray-500 text-center mt-2">Scan to pay</p>
+                  <p className="text-xs font-bold text-primos-gray-600 text-center mt-2">SCAN TO PAY</p>
                 </div>
               </div>
             </div>
           )}
 
           {/* Reference Number */}
-          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-            <h4 className="font-medium text-black mb-2">📸 Payment Proof Required</h4>
-            <p className="text-sm text-gray-700">
+          <div className="bg-yellow-50 border-2 border-yellow-400 rounded-lg p-5">
+            <h4 className="font-bold text-primos-black mb-2 text-lg">📸 Payment Proof Required</h4>
+            <p className="text-sm font-medium text-primos-gray-700">
               After making your payment, please take a screenshot of your payment receipt and attach it when you send your order via Messenger. This helps us verify and process your order quickly.
             </p>
           </div>
         </div>
 
         {/* Order Summary */}
-        <div className="bg-white rounded-xl shadow-sm p-6">
-          <h2 className="text-2xl font-noto font-medium text-black mb-6">Final Order Summary</h2>
+        <div className="bg-white rounded-xl shadow-xl border-2 border-primos-gray-200 p-8">
+          <h2 className="text-3xl font-display font-bold text-primos-black mb-6 pb-4 border-b-4 border-primos-red">Final Order Summary</h2>
           
           <div className="space-y-4 mb-6">
-            <div className="bg-red-50 rounded-lg p-4">
-              <h4 className="font-medium text-black mb-2">Customer Details</h4>
-              <p className="text-sm text-gray-600">Name: {customerName}</p>
-              <p className="text-sm text-gray-600">Contact: {contactNumber}</p>
-              <p className="text-sm text-gray-600">Service: {serviceType.charAt(0).toUpperCase() + serviceType.slice(1)}</p>
+            <div className="bg-red-50 border-2 border-primos-red rounded-lg p-5">
+              <h4 className="font-bold text-primos-black mb-3 text-lg">Customer Details</h4>
+              <p className="text-sm font-semibold text-primos-gray-700">Name: {customerName}</p>
+              <p className="text-sm font-semibold text-primos-gray-700">Contact: {contactNumber}</p>
+              <p className="text-sm font-semibold text-primos-gray-700">Service: {serviceType.charAt(0).toUpperCase() + serviceType.slice(1)}</p>
               {serviceType === 'delivery' && (
                 <>
-                  <p className="text-sm text-gray-600">Address: {address}</p>
-                  {landmark && <p className="text-sm text-gray-600">Landmark: {landmark}</p>}
+                  <p className="text-sm font-semibold text-primos-gray-700">Address: {address}</p>
+                  {landmark && <p className="text-sm font-semibold text-primos-gray-700">Landmark: {landmark}</p>}
                 </>
               )}
               {serviceType === 'pickup' && (
-                <p className="text-sm text-gray-600">
+                <p className="text-sm font-semibold text-primos-gray-700">
                   Pickup Time: {pickupTime === 'custom' ? customTime : `${pickupTime} minutes`}
                 </p>
               )}
               {serviceType === 'dine-in' && (
                 <>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm font-semibold text-primos-gray-700">
                     Party Size: {partySize} person{partySize !== 1 ? 's' : ''}
                   </p>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm font-semibold text-primos-gray-700">
                     Preferred Time: {dineInTime ? new Date(dineInTime).toLocaleString('en-US', { 
                       weekday: 'long', 
                       year: 'numeric', 
@@ -465,14 +465,14 @@ Please confirm this order to proceed. Thank you for choosing ClickEats! 🥟
             </div>
 
             {cartItems.map((item) => (
-              <div key={item.id} className="flex items-center justify-between py-2 border-b border-red-100">
+              <div key={item.id} className="flex items-center justify-between py-3 border-b-2 border-primos-gray-200">
                 <div>
-                  <h4 className="font-medium text-black">{item.name}</h4>
+                  <h4 className="font-bold text-primos-black text-lg">{item.name}</h4>
                   {item.selectedVariation && (
-                    <p className="text-sm text-gray-600">Size: {item.selectedVariation.name}</p>
+                    <p className="text-sm font-semibold text-primos-gray-600">Size: {item.selectedVariation.name}</p>
                   )}
                   {item.selectedAddOns && item.selectedAddOns.length > 0 && (
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm font-semibold text-primos-gray-600">
                       Add-ons: {item.selectedAddOns.map(addOn => 
                         addOn.quantity && addOn.quantity > 1 
                           ? `${addOn.name} x${addOn.quantity}`
@@ -480,28 +480,28 @@ Please confirm this order to proceed. Thank you for choosing ClickEats! 🥟
                       ).join(', ')}
                     </p>
                   )}
-                  <p className="text-sm text-gray-600">₱{item.totalPrice} x {item.quantity}</p>
+                  <p className="text-sm font-semibold text-primos-gray-600">₱{item.totalPrice} x {item.quantity}</p>
                 </div>
-                <span className="font-semibold text-black">₱{item.totalPrice * item.quantity}</span>
+                <span className="font-black text-primos-red text-xl">₱{item.totalPrice * item.quantity}</span>
               </div>
             ))}
           </div>
           
-          <div className="border-t border-red-200 pt-4 mb-6">
-            <div className="flex items-center justify-between text-2xl font-noto font-semibold text-black">
-              <span>Total:</span>
-              <span>₱{totalPrice}</span>
+          <div className="border-t-4 border-primos-red pt-6 mb-8">
+            <div className="flex items-center justify-between text-3xl font-black">
+              <span className="text-primos-black">TOTAL:</span>
+              <span className="text-primos-red">₱{totalPrice}</span>
             </div>
           </div>
 
           <button
             onClick={handlePlaceOrder}
-            className="w-full py-4 rounded-xl font-medium text-lg transition-all duration-200 transform bg-red-600 text-white hover:bg-red-700 hover:scale-[1.02]"
+            className="w-full py-5 rounded-lg font-bold text-xl transition-all duration-200 transform bg-primos-red text-white hover:bg-primos-darkRed hover:scale-[1.02] shadow-2xl"
           >
-            Place Order via Messenger
+            PLACE ORDER VIA MESSENGER
           </button>
           
-          <p className="text-xs text-gray-500 text-center mt-3">
+          <p className="text-xs font-semibold text-primos-gray-600 text-center mt-4">
             You'll be redirected to Facebook Messenger to confirm your order. Don't forget to attach your payment screenshot!
           </p>
         </div>

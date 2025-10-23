@@ -23,16 +23,16 @@ const Cart: React.FC<CartProps> = ({
 }) => {
   if (cartItems.length === 0) {
     return (
-      <div className="max-w-4xl mx-auto px-4 py-12">
-        <div className="text-center py-16">
-          <div className="text-6xl mb-4">☕</div>
-          <h2 className="text-2xl font-playfair font-medium text-black mb-2">Your cart is empty</h2>
-          <p className="text-gray-600 mb-6">Add some delicious items to get started!</p>
+      <div className="max-w-4xl mx-auto px-4 py-12 bg-white min-h-screen">
+        <div className="text-center py-20">
+          <div className="text-7xl mb-6">🛒</div>
+          <h2 className="text-4xl font-display font-bold text-primos-red mb-4">YOUR CART IS EMPTY</h2>
+          <p className="text-primos-gray-600 text-lg font-medium mb-8">Add some delicious items to get started!</p>
           <button
             onClick={onContinueShopping}
-            className="bg-red-600 text-white px-6 py-3 rounded-full hover:bg-red-700 transition-all duration-200"
+            className="bg-primos-red text-white px-8 py-4 rounded-lg hover:bg-primos-darkRed transition-all duration-200 font-bold text-lg shadow-xl"
           >
-            Browse Menu
+            BROWSE MENU
           </button>
         </div>
       </div>
@@ -40,36 +40,88 @@ const Cart: React.FC<CartProps> = ({
   }
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
-      <div className="flex items-center justify-between mb-8">
+    <div className="max-w-5xl mx-auto px-4 py-8 bg-white min-h-screen">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-10 gap-4">
         <button
           onClick={onContinueShopping}
-          className="flex items-center space-x-2 text-gray-600 hover:text-black transition-colors duration-200"
+          className="flex items-center space-x-2 text-primos-black hover:text-primos-red transition-colors duration-200 font-bold"
         >
-          <ArrowLeft className="h-5 w-5" />
-          <span>Continue Shopping</span>
+          <ArrowLeft className="h-6 w-6" />
+          <span className="hidden sm:inline">CONTINUE SHOPPING</span>
+          <span className="sm:hidden">BACK</span>
         </button>
-        <h1 className="text-3xl font-playfair font-semibold text-black">Your Cart</h1>
-        <h1 className="text-3xl font-noto font-semibold text-black">Your Cart</h1>
+        <h1 className="text-2xl sm:text-4xl font-display font-bold text-primos-red">YOUR CART</h1>
         <button
           onClick={clearCart}
-          className="text-red-500 hover:text-red-600 transition-colors duration-200"
+          className="text-primos-red hover:text-primos-darkRed transition-colors duration-200 font-bold text-sm sm:text-base"
         >
-          Clear All
+          CLEAR ALL
         </button>
       </div>
 
-      <div className="bg-white rounded-xl shadow-sm overflow-hidden mb-8">
+      <div className="bg-white rounded-xl shadow-xl border-2 border-primos-gray-200 overflow-hidden mb-8">
         {cartItems.map((item, index) => (
-          <div key={item.id} className={`p-6 ${index !== cartItems.length - 1 ? 'border-b border-cream-200' : ''}`}>
-            <div className="flex items-center justify-between">
+          <div key={item.id} className={`p-4 sm:p-6 ${index !== cartItems.length - 1 ? 'border-b-2 border-primos-gray-200' : ''}`}>
+            {/* Mobile Layout - Stack Vertically */}
+            <div className="block sm:hidden">
+              <div className="flex items-start justify-between mb-3">
+                <div className="flex-1 pr-2">
+                  <h3 className="text-lg font-bold text-primos-black mb-2">{item.name}</h3>
+                  {item.selectedVariation && (
+                    <p className="text-xs font-semibold text-primos-gray-600 mb-1">Size: {item.selectedVariation.name}</p>
+                  )}
+                  {item.selectedAddOns && item.selectedAddOns.length > 0 && (
+                    <p className="text-xs font-semibold text-primos-gray-600 mb-1">
+                      Add-ons: {item.selectedAddOns.map(addOn => 
+                        addOn.quantity && addOn.quantity > 1 
+                          ? `${addOn.name} x${addOn.quantity}`
+                          : addOn.name
+                      ).join(', ')}
+                    </p>
+                  )}
+                  <p className="text-sm font-bold text-primos-red">₱{item.totalPrice} each</p>
+                </div>
+                <button
+                  onClick={() => removeFromCart(item.id)}
+                  className="p-2 text-white bg-primos-red hover:bg-primos-darkRed rounded-lg transition-all duration-200 border-2 border-primos-red shadow-lg flex-shrink-0"
+                  aria-label="Remove item"
+                >
+                  <Trash2 className="h-5 w-5" />
+                </button>
+              </div>
+              
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-2 bg-primos-gray-100 rounded-lg p-1 border-2 border-primos-gray-300">
+                  <button
+                    onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                    className="p-2 hover:bg-primos-gray-200 rounded-md transition-colors duration-200"
+                  >
+                    <Minus className="h-4 w-4 text-primos-black" />
+                  </button>
+                  <span className="font-black text-primos-black min-w-[32px] text-center text-base">{item.quantity}</span>
+                  <button
+                    onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                    className="p-2 hover:bg-primos-gray-200 rounded-md transition-colors duration-200"
+                  >
+                    <Plus className="h-4 w-4 text-primos-black" />
+                  </button>
+                </div>
+                
+                <div className="text-right">
+                  <p className="text-xl font-black text-primos-red">₱{item.totalPrice * item.quantity}</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Desktop Layout - Horizontal */}
+            <div className="hidden sm:flex items-center justify-between">
               <div className="flex-1">
-                <h3 className="text-lg font-noto font-medium text-black mb-1">{item.name}</h3>
+                <h3 className="text-xl font-bold text-primos-black mb-2">{item.name}</h3>
                 {item.selectedVariation && (
-                  <p className="text-sm text-gray-500 mb-1">Size: {item.selectedVariation.name}</p>
+                  <p className="text-sm font-semibold text-primos-gray-600 mb-1">Size: {item.selectedVariation.name}</p>
                 )}
                 {item.selectedAddOns && item.selectedAddOns.length > 0 && (
-                  <p className="text-sm text-gray-500 mb-1">
+                  <p className="text-sm font-semibold text-primos-gray-600 mb-1">
                     Add-ons: {item.selectedAddOns.map(addOn => 
                       addOn.quantity && addOn.quantity > 1 
                         ? `${addOn.name} x${addOn.quantity}`
@@ -77,35 +129,35 @@ const Cart: React.FC<CartProps> = ({
                     ).join(', ')}
                   </p>
                 )}
-                <p className="text-lg font-semibold text-black">₱{item.totalPrice} each</p>
+                <p className="text-lg font-bold text-primos-red">₱{item.totalPrice} each</p>
               </div>
               
               <div className="flex items-center space-x-4 ml-4">
-                <div className="flex items-center space-x-3 bg-yellow-100 rounded-full p-1">
+                <div className="flex items-center space-x-3 bg-primos-gray-100 rounded-lg p-1.5 border-2 border-primos-gray-300">
                   <button
                     onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                    className="p-2 hover:bg-yellow-200 rounded-full transition-colors duration-200"
+                    className="p-2 hover:bg-primos-gray-200 rounded-md transition-colors duration-200"
                   >
-                    <Minus className="h-4 w-4" />
+                    <Minus className="h-5 w-5 text-primos-black" />
                   </button>
-                  <span className="font-semibold text-black min-w-[32px] text-center">{item.quantity}</span>
+                  <span className="font-black text-primos-black min-w-[40px] text-center text-lg">{item.quantity}</span>
                   <button
                     onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                    className="p-2 hover:bg-yellow-200 rounded-full transition-colors duration-200"
+                    className="p-2 hover:bg-primos-gray-200 rounded-md transition-colors duration-200"
                   >
-                    <Plus className="h-4 w-4" />
+                    <Plus className="h-5 w-5 text-primos-black" />
                   </button>
                 </div>
                 
-                <div className="text-right">
-                  <p className="text-lg font-semibold text-black">₱{item.totalPrice * item.quantity}</p>
+                <div className="text-right min-w-[120px]">
+                  <p className="text-2xl font-black text-primos-red">₱{item.totalPrice * item.quantity}</p>
                 </div>
                 
                 <button
                   onClick={() => removeFromCart(item.id)}
-                  className="p-2 text-red-500 hover:text-red-600 hover:bg-red-50 rounded-full transition-all duration-200"
+                  className="p-3 text-primos-red hover:text-white hover:bg-primos-red rounded-lg transition-all duration-200 border-2 border-primos-red"
                 >
-                  <Trash2 className="h-4 w-4" />
+                  <Trash2 className="h-5 w-5" />
                 </button>
               </div>
             </div>
@@ -113,17 +165,17 @@ const Cart: React.FC<CartProps> = ({
         ))}
       </div>
 
-      <div className="bg-white rounded-xl shadow-sm p-6">
-        <div className="flex items-center justify-between text-2xl font-noto font-semibold text-black mb-6">
-          <span>Total:</span>
-          <span>₱{parseFloat(getTotalPrice() || 0).toFixed(2)}</span>
+      <div className="bg-white rounded-xl shadow-xl border-2 border-primos-gray-200 p-4 sm:p-8">
+        <div className="flex items-center justify-between text-2xl sm:text-3xl font-black mb-6 sm:mb-8 pb-4 sm:pb-6 border-b-4 border-primos-red">
+          <span className="text-primos-black">TOTAL:</span>
+          <span className="text-primos-red">₱{parseFloat(getTotalPrice() || 0).toFixed(2)}</span>
         </div>
         
         <button
           onClick={onCheckout}
-          className="w-full bg-red-600 text-white py-4 rounded-xl hover:bg-red-700 transition-all duration-200 transform hover:scale-[1.02] font-medium text-lg"
+          className="w-full bg-primos-red text-white py-4 sm:py-5 rounded-lg hover:bg-primos-darkRed transition-all duration-200 transform hover:scale-[1.02] font-bold text-lg sm:text-xl shadow-2xl"
         >
-          Proceed to Checkout
+          PROCEED TO CHECKOUT
         </button>
       </div>
     </div>
