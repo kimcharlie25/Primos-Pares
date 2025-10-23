@@ -112,11 +112,11 @@ Please confirm this order to proceed. Thank you for choosing Primos' Pares ! ðŸ¥
 
   if (step === 'details') {
     return (
-      <div className="max-w-6xl mx-auto px-4 py-8 bg-white min-h-screen">
+      <div className="max-w-6xl mx-auto px-4 py-8 bg-primos-black min-h-screen">
         <div className="flex items-center mb-10">
           <button
             onClick={onBack}
-            className="flex items-center space-x-2 text-primos-black hover:text-primos-red transition-colors duration-200 font-bold"
+            className="flex items-center space-x-2 text-primos-white hover:text-primos-red transition-colors duration-200 font-bold"
           >
             <ArrowLeft className="h-6 w-6" />
             <span>BACK TO CART</span>
@@ -126,14 +126,14 @@ Please confirm this order to proceed. Thank you for choosing Primos' Pares ! ðŸ¥
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Order Summary */}
-          <div className="bg-white rounded-xl shadow-xl border-2 border-primos-gray-200 p-8">
-            <h2 className="text-3xl font-display font-bold text-primos-black mb-6 pb-4 border-b-4 border-primos-red">Order Summary</h2>
+          <div className="bg-primos-gray-50 rounded-xl shadow-xl shadow-primos-red/10 border-2 border-primos-gray-300 p-8">
+            <h2 className="text-3xl font-display font-bold text-primos-white mb-6 pb-4 border-b-4 border-primos-red">Order Summary</h2>
             
             <div className="space-y-4 mb-6">
               {cartItems.map((item) => (
-                <div key={item.id} className="flex items-center justify-between py-3 border-b-2 border-primos-gray-200">
+                <div key={item.id} className="flex items-center justify-between py-3 border-b-2 border-primos-gray-300">
                   <div>
-                    <h4 className="font-bold text-primos-black text-lg">{item.name}</h4>
+                    <h4 className="font-bold text-primos-white text-lg">{item.name}</h4>
                     {item.selectedVariation && (
                       <p className="text-sm font-semibold text-primos-gray-600">Size: {item.selectedVariation.name}</p>
                     )}
@@ -151,37 +151,37 @@ Please confirm this order to proceed. Thank you for choosing Primos' Pares ! ðŸ¥
             
             <div className="border-t-4 border-primos-red pt-6">
               <div className="flex items-center justify-between text-3xl font-black">
-                <span className="text-primos-black">TOTAL:</span>
+                <span className="text-primos-white">TOTAL:</span>
                 <span className="text-primos-red">â‚±{totalPrice}</span>
               </div>
             </div>
           </div>
 
           {/* Customer Details Form */}
-          <div className="bg-white rounded-xl shadow-xl border-2 border-primos-gray-200 p-8">
-            <h2 className="text-3xl font-display font-bold text-primos-black mb-6 pb-4 border-b-4 border-primos-red">Customer Information</h2>
+          <div className="bg-primos-gray-50 rounded-xl shadow-xl shadow-primos-red/10 border-2 border-primos-gray-300 p-8">
+            <h2 className="text-3xl font-display font-bold text-primos-white mb-6 pb-4 border-b-4 border-primos-red">Customer Information</h2>
             
             <form className="space-y-6">
               {/* Customer Information */}
               <div>
-                <label className="block text-sm font-bold text-primos-black mb-2 uppercase">Full Name *</label>
+                <label className="block text-sm font-bold text-primos-white mb-2 uppercase">Full Name *</label>
                 <input
                   type="text"
                   value={customerName}
                   onChange={(e) => setCustomerName(e.target.value)}
-                  className="w-full px-4 py-3 border-2 border-primos-gray-300 rounded-lg focus:ring-2 focus:ring-primos-red focus:border-primos-red transition-all duration-200 font-medium"
+                  className="w-full px-4 py-3 bg-primos-gray-200 border-2 border-primos-gray-400 rounded-lg focus:ring-2 focus:ring-primos-red focus:border-primos-red transition-all duration-200 font-medium text-primos-white placeholder-primos-gray-600"
                   placeholder="Enter your full name"
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-bold text-primos-black mb-2 uppercase">Contact Number *</label>
+                <label className="block text-sm font-bold text-primos-white mb-2 uppercase">Contact Number *</label>
                 <input
                   type="tel"
                   value={contactNumber}
                   onChange={(e) => setContactNumber(e.target.value)}
-                  className="w-full px-4 py-3 border-2 border-primos-gray-300 rounded-lg focus:ring-2 focus:ring-primos-red focus:border-primos-red transition-all duration-200 font-medium"
+                  className="w-full px-4 py-3 bg-primos-gray-200 border-2 border-primos-gray-400 rounded-lg focus:ring-2 focus:ring-primos-red focus:border-primos-red transition-all duration-200 font-medium text-primos-white placeholder-primos-gray-600"
                   placeholder="09XX XXX XXXX"
                   required
                 />
@@ -189,7 +189,7 @@ Please confirm this order to proceed. Thank you for choosing Primos' Pares ! ðŸ¥
 
               {/* Service Type */}
               <div>
-                <label className="block text-sm font-bold text-primos-black mb-3 uppercase">Service Type *</label>
+                <label className="block text-sm font-bold text-primos-white mb-3 uppercase">Service Type *</label>
                 <div className="grid grid-cols-3 gap-3">
                   {[
                     { value: 'dine-in', label: 'Dine In', icon: 'ðŸª‘' },
@@ -202,8 +202,8 @@ Please confirm this order to proceed. Thank you for choosing Primos' Pares ! ðŸ¥
                       onClick={() => setServiceType(option.value as ServiceType)}
                       className={`p-4 rounded-lg border-2 transition-all duration-200 ${
                         serviceType === option.value
-                          ? 'border-primos-red bg-primos-red text-white shadow-lg'
-                          : 'border-primos-gray-300 bg-white text-primos-black hover:border-primos-red'
+                          ? 'border-primos-red bg-primos-red text-white shadow-lg shadow-primos-red/50'
+                          : 'border-primos-gray-400 bg-primos-gray-200 text-primos-white hover:border-primos-red'
                       }`}
                     >
                       <div className="text-3xl mb-1">{option.icon}</div>
@@ -217,37 +217,37 @@ Please confirm this order to proceed. Thank you for choosing Primos' Pares ! ðŸ¥
               {serviceType === 'dine-in' && (
                 <>
                   <div>
-                    <label className="block text-sm font-medium text-black mb-2">Party Size *</label>
+                    <label className="block text-sm font-bold text-primos-white mb-2 uppercase">Party Size *</label>
                     <div className="flex items-center space-x-4">
                       <button
                         type="button"
                         onClick={() => setPartySize(Math.max(1, partySize - 1))}
-                        className="w-10 h-10 rounded-lg border-2 border-red-300 flex items-center justify-center text-red-600 hover:border-red-400 hover:bg-red-50 transition-all duration-200"
+                        className="w-10 h-10 rounded-lg border-2 border-primos-gray-400 bg-primos-gray-200 flex items-center justify-center text-primos-red hover:border-primos-red hover:bg-primos-gray-100 transition-all duration-200 font-bold text-xl"
                       >
                         -
                       </button>
-                      <span className="text-2xl font-semibold text-black min-w-[3rem] text-center">{partySize}</span>
+                      <span className="text-2xl font-black text-primos-white min-w-[3rem] text-center">{partySize}</span>
                       <button
                         type="button"
                         onClick={() => setPartySize(Math.min(20, partySize + 1))}
-                        className="w-10 h-10 rounded-lg border-2 border-red-300 flex items-center justify-center text-red-600 hover:border-red-400 hover:bg-red-50 transition-all duration-200"
+                        className="w-10 h-10 rounded-lg border-2 border-primos-gray-400 bg-primos-gray-200 flex items-center justify-center text-primos-red hover:border-primos-red hover:bg-primos-gray-100 transition-all duration-200 font-bold text-xl"
                       >
                         +
                       </button>
-                      <span className="text-sm text-gray-600 ml-2">person{partySize !== 1 ? 's' : ''}</span>
+                      <span className="text-sm font-semibold text-primos-gray-600 ml-2">person{partySize !== 1 ? 's' : ''}</span>
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-black mb-2">Preferred Time *</label>
+                    <label className="block text-sm font-bold text-primos-white mb-2 uppercase">Preferred Time *</label>
                     <input
                       type="datetime-local"
                       value={dineInTime}
                       onChange={(e) => setDineInTime(e.target.value)}
-                      className="w-full px-4 py-3 border border-red-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200"
+                      className="w-full px-4 py-3 bg-primos-gray-200 border-2 border-primos-gray-400 rounded-lg focus:ring-2 focus:ring-primos-red focus:border-primos-red transition-all duration-200 font-medium text-primos-white"
                       required
                     />
-                    <p className="text-xs text-gray-500 mt-1">Please select your preferred dining time</p>
+                    <p className="text-xs font-medium text-primos-gray-600 mt-1">Please select your preferred dining time</p>
                   </div>
                 </>
               )}
@@ -255,7 +255,7 @@ Please confirm this order to proceed. Thank you for choosing Primos' Pares ! ðŸ¥
               {/* Pickup Time Selection */}
               {serviceType === 'pickup' && (
                 <div>
-                  <label className="block text-sm font-medium text-black mb-3">Pickup Time *</label>
+                  <label className="block text-sm font-bold text-primos-white mb-3 uppercase">Pickup Time *</label>
                   <div className="space-y-3">
                     <div className="grid grid-cols-2 gap-3">
                       {[
@@ -270,12 +270,12 @@ Please confirm this order to proceed. Thank you for choosing Primos' Pares ! ðŸ¥
                           onClick={() => setPickupTime(option.value)}
                           className={`p-3 rounded-lg border-2 transition-all duration-200 text-sm ${
                             pickupTime === option.value
-                              ? 'border-red-600 bg-red-600 text-white'
-                              : 'border-red-300 bg-white text-gray-700 hover:border-red-400'
+                              ? 'border-primos-red bg-primos-red text-white shadow-lg shadow-primos-red/50'
+                              : 'border-primos-gray-400 bg-primos-gray-200 text-primos-white hover:border-primos-red'
                           }`}
                         >
                           <Clock className="h-4 w-4 mx-auto mb-1" />
-                          {option.label}
+                          <span className="font-bold">{option.label}</span>
                         </button>
                       ))}
                     </div>
@@ -285,7 +285,7 @@ Please confirm this order to proceed. Thank you for choosing Primos' Pares ! ðŸ¥
                         type="text"
                         value={customTime}
                         onChange={(e) => setCustomTime(e.target.value)}
-                        className="w-full px-4 py-3 border border-red-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200"
+                        className="w-full px-4 py-3 bg-primos-gray-200 border-2 border-primos-gray-400 rounded-lg focus:ring-2 focus:ring-primos-red focus:border-primos-red transition-all duration-200 font-medium text-primos-white placeholder-primos-gray-600"
                         placeholder="e.g., 45 minutes, 1 hour, 2:30 PM"
                         required
                       />
@@ -298,11 +298,11 @@ Please confirm this order to proceed. Thank you for choosing Primos' Pares ! ðŸ¥
               {serviceType === 'delivery' && (
                 <>
                   <div>
-                    <label className="block text-sm font-bold text-primos-black mb-2 uppercase">Delivery Address *</label>
+                    <label className="block text-sm font-bold text-primos-white mb-2 uppercase">Delivery Address *</label>
                     <textarea
                       value={address}
                       onChange={(e) => setAddress(e.target.value)}
-                      className="w-full px-4 py-3 border-2 border-primos-gray-300 rounded-lg focus:ring-2 focus:ring-primos-red focus:border-primos-red transition-all duration-200 font-medium"
+                      className="w-full px-4 py-3 bg-primos-gray-200 border-2 border-primos-gray-400 rounded-lg focus:ring-2 focus:ring-primos-red focus:border-primos-red transition-all duration-200 font-medium text-primos-white placeholder-primos-gray-600"
                       placeholder="Enter your complete delivery address"
                       rows={3}
                       required
@@ -310,12 +310,12 @@ Please confirm this order to proceed. Thank you for choosing Primos' Pares ! ðŸ¥
                   </div>
                   
                   <div>
-                    <label className="block text-sm font-bold text-primos-black mb-2 uppercase">Landmark</label>
+                    <label className="block text-sm font-bold text-primos-white mb-2 uppercase">Landmark</label>
                     <input
                       type="text"
                       value={landmark}
                       onChange={(e) => setLandmark(e.target.value)}
-                      className="w-full px-4 py-3 border-2 border-primos-gray-300 rounded-lg focus:ring-2 focus:ring-primos-red focus:border-primos-red transition-all duration-200 font-medium"
+                      className="w-full px-4 py-3 bg-primos-gray-200 border-2 border-primos-gray-400 rounded-lg focus:ring-2 focus:ring-primos-red focus:border-primos-red transition-all duration-200 font-medium text-primos-white placeholder-primos-gray-600"
                       placeholder="e.g., Near McDonald's, Beside 7-Eleven, In front of school"
                     />
                   </div>
@@ -324,11 +324,11 @@ Please confirm this order to proceed. Thank you for choosing Primos' Pares ! ðŸ¥
 
               {/* Special Notes */}
               <div>
-                <label className="block text-sm font-bold text-primos-black mb-2 uppercase">Special Instructions</label>
+                <label className="block text-sm font-bold text-primos-white mb-2 uppercase">Special Instructions</label>
                 <textarea
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
-                  className="w-full px-4 py-3 border-2 border-primos-gray-300 rounded-lg focus:ring-2 focus:ring-primos-red focus:border-primos-red transition-all duration-200 font-medium"
+                  className="w-full px-4 py-3 bg-primos-gray-200 border-2 border-primos-gray-400 rounded-lg focus:ring-2 focus:ring-primos-red focus:border-primos-red transition-all duration-200 font-medium text-primos-white placeholder-primos-gray-600"
                   placeholder="Any special requests or notes..."
                   rows={3}
                 />
@@ -339,8 +339,8 @@ Please confirm this order to proceed. Thank you for choosing Primos' Pares ! ðŸ¥
                 disabled={!isDetailsValid}
                 className={`w-full py-5 rounded-lg font-bold text-xl transition-all duration-200 transform shadow-xl ${
                   isDetailsValid
-                    ? 'bg-primos-red text-white hover:bg-primos-darkRed hover:scale-[1.02]'
-                    : 'bg-primos-gray-300 text-primos-gray-500 cursor-not-allowed'
+                    ? 'bg-primos-red text-white hover:bg-primos-darkRed hover:scale-[1.02] shadow-primos-red/50'
+                    : 'bg-primos-gray-300 text-primos-gray-600 cursor-not-allowed'
                 }`}
               >
                 PROCEED TO PAYMENT
@@ -354,11 +354,11 @@ Please confirm this order to proceed. Thank you for choosing Primos' Pares ! ðŸ¥
 
   // Payment Step
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8 bg-white min-h-screen">
+    <div className="max-w-6xl mx-auto px-4 py-8 bg-primos-black min-h-screen">
       <div className="flex items-center mb-10">
         <button
           onClick={() => setStep('details')}
-          className="flex items-center space-x-2 text-primos-black hover:text-primos-red transition-colors duration-200 font-bold"
+          className="flex items-center space-x-2 text-primos-white hover:text-primos-red transition-colors duration-200 font-bold"
         >
           <ArrowLeft className="h-6 w-6" />
           <span>BACK TO DETAILS</span>
@@ -368,8 +368,8 @@ Please confirm this order to proceed. Thank you for choosing Primos' Pares ! ðŸ¥
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Payment Method Selection */}
-        <div className="bg-white rounded-xl shadow-xl border-2 border-primos-gray-200 p-8">
-          <h2 className="text-3xl font-display font-bold text-primos-black mb-6 pb-4 border-b-4 border-primos-red">Choose Payment Method</h2>
+        <div className="bg-primos-gray-50 rounded-xl shadow-xl shadow-primos-red/10 border-2 border-primos-gray-300 p-8">
+          <h2 className="text-3xl font-display font-bold text-primos-white mb-6 pb-4 border-b-4 border-primos-red">Choose Payment Method</h2>
           
           <div className="grid grid-cols-1 gap-4 mb-6">
             {paymentMethods.map((method) => (
@@ -379,8 +379,8 @@ Please confirm this order to proceed. Thank you for choosing Primos' Pares ! ðŸ¥
                 onClick={() => setPaymentMethod(method.id as PaymentMethod)}
                 className={`p-5 rounded-lg border-2 transition-all duration-200 flex items-center space-x-4 shadow-lg ${
                   paymentMethod === method.id
-                    ? 'border-primos-red bg-primos-red text-white'
-                    : 'border-primos-gray-300 bg-white text-primos-black hover:border-primos-red'
+                    ? 'border-primos-red bg-primos-red text-white shadow-primos-red/50'
+                    : 'border-primos-gray-400 bg-primos-gray-200 text-primos-white hover:border-primos-red'
                 }`}
               >
                 <span className="text-3xl">ðŸ’³</span>
@@ -391,12 +391,12 @@ Please confirm this order to proceed. Thank you for choosing Primos' Pares ! ðŸ¥
 
           {/* Payment Details with QR Code */}
           {selectedPaymentMethod && (
-            <div className="bg-red-50 border-2 border-primos-red rounded-lg p-6 mb-6">
-              <h3 className="font-bold text-primos-black mb-4 text-lg">Payment Details</h3>
+            <div className="bg-primos-gray-200 border-2 border-primos-red rounded-lg p-6 mb-6">
+              <h3 className="font-bold text-primos-white mb-4 text-lg">Payment Details</h3>
               <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                 <div className="flex-1">
                   <p className="text-sm font-semibold text-primos-gray-600 mb-1">{selectedPaymentMethod.name}</p>
-                  <p className="font-mono text-primos-black font-black text-lg">{selectedPaymentMethod.account_number}</p>
+                  <p className="font-mono text-primos-white font-black text-lg">{selectedPaymentMethod.account_number}</p>
                   <p className="text-sm font-semibold text-primos-gray-600 mb-3">Account Name: {selectedPaymentMethod.account_name}</p>
                   <p className="text-2xl font-black text-primos-red">Amount: â‚±{totalPrice}</p>
                 </div>
@@ -404,20 +404,20 @@ Please confirm this order to proceed. Thank you for choosing Primos' Pares ! ðŸ¥
                   <img 
                     src={selectedPaymentMethod.qr_code_url} 
                     alt={`${selectedPaymentMethod.name} QR Code`}
-                    className="w-40 h-40 rounded-lg border-4 border-primos-red shadow-xl"
+                    className="w-40 h-40 rounded-lg border-4 border-primos-red shadow-xl shadow-primos-red/50"
                     onError={(e) => {
                       e.currentTarget.src = 'https://images.pexels.com/photos/8867482/pexels-photo-8867482.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop';
                     }}
                   />
-                  <p className="text-xs font-bold text-primos-gray-600 text-center mt-2">SCAN TO PAY</p>
+                  <p className="text-xs font-bold text-primos-gray-700 text-center mt-2">SCAN TO PAY</p>
                 </div>
               </div>
             </div>
           )}
 
           {/* Reference Number */}
-          <div className="bg-yellow-50 border-2 border-yellow-400 rounded-lg p-5">
-            <h4 className="font-bold text-primos-black mb-2 text-lg">ðŸ“¸ Payment Proof Required</h4>
+          <div className="bg-yellow-900/30 border-2 border-yellow-600 rounded-lg p-5">
+            <h4 className="font-bold text-yellow-400 mb-2 text-lg">ðŸ“¸ Payment Proof Required</h4>
             <p className="text-sm font-medium text-primos-gray-700">
               After making your payment, please take a screenshot of your payment receipt and attach it when you send your order via Messenger. This helps us verify and process your order quickly.
             </p>
@@ -425,12 +425,12 @@ Please confirm this order to proceed. Thank you for choosing Primos' Pares ! ðŸ¥
         </div>
 
         {/* Order Summary */}
-        <div className="bg-white rounded-xl shadow-xl border-2 border-primos-gray-200 p-8">
-          <h2 className="text-3xl font-display font-bold text-primos-black mb-6 pb-4 border-b-4 border-primos-red">Final Order Summary</h2>
+        <div className="bg-primos-gray-50 rounded-xl shadow-xl shadow-primos-red/10 border-2 border-primos-gray-300 p-8">
+          <h2 className="text-3xl font-display font-bold text-primos-white mb-6 pb-4 border-b-4 border-primos-red">Final Order Summary</h2>
           
           <div className="space-y-4 mb-6">
-            <div className="bg-red-50 border-2 border-primos-red rounded-lg p-5">
-              <h4 className="font-bold text-primos-black mb-3 text-lg">Customer Details</h4>
+            <div className="bg-primos-gray-200 border-2 border-primos-red rounded-lg p-5">
+              <h4 className="font-bold text-primos-white mb-3 text-lg">Customer Details</h4>
               <p className="text-sm font-semibold text-primos-gray-700">Name: {customerName}</p>
               <p className="text-sm font-semibold text-primos-gray-700">Contact: {contactNumber}</p>
               <p className="text-sm font-semibold text-primos-gray-700">Service: {serviceType.charAt(0).toUpperCase() + serviceType.slice(1)}</p>
@@ -465,9 +465,9 @@ Please confirm this order to proceed. Thank you for choosing Primos' Pares ! ðŸ¥
             </div>
 
             {cartItems.map((item) => (
-              <div key={item.id} className="flex items-center justify-between py-3 border-b-2 border-primos-gray-200">
+              <div key={item.id} className="flex items-center justify-between py-3 border-b-2 border-primos-gray-300">
                 <div>
-                  <h4 className="font-bold text-primos-black text-lg">{item.name}</h4>
+                  <h4 className="font-bold text-primos-white text-lg">{item.name}</h4>
                   {item.selectedVariation && (
                     <p className="text-sm font-semibold text-primos-gray-600">Size: {item.selectedVariation.name}</p>
                   )}
@@ -489,19 +489,19 @@ Please confirm this order to proceed. Thank you for choosing Primos' Pares ! ðŸ¥
           
           <div className="border-t-4 border-primos-red pt-6 mb-8">
             <div className="flex items-center justify-between text-3xl font-black">
-              <span className="text-primos-black">TOTAL:</span>
+              <span className="text-primos-white">TOTAL:</span>
               <span className="text-primos-red">â‚±{totalPrice}</span>
             </div>
           </div>
 
           <button
             onClick={handlePlaceOrder}
-            className="w-full py-5 rounded-lg font-bold text-xl transition-all duration-200 transform bg-primos-red text-white hover:bg-primos-darkRed hover:scale-[1.02] shadow-2xl"
+            className="w-full py-5 rounded-lg font-bold text-xl transition-all duration-200 transform bg-primos-red text-white hover:bg-primos-darkRed hover:scale-[1.02] shadow-2xl shadow-primos-red/50"
           >
             PLACE ORDER VIA MESSENGER
           </button>
           
-          <p className="text-xs font-semibold text-primos-gray-600 text-center mt-4">
+          <p className="text-xs font-semibold text-primos-gray-700 text-center mt-4">
             You'll be redirected to Facebook Messenger to confirm your order. Don't forget to attach your payment screenshot!
           </p>
         </div>

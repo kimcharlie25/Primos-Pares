@@ -5,21 +5,22 @@ export default {
     extend: {
       colors: {
         primos: {
-          red: '#DC2626', // Vibrant red for headers and prices
-          darkRed: '#B91C1C', // Darker red for hover states
-          black: '#000000', // Pure black for text
-          white: '#FFFFFF', // Pure white for backgrounds
+          red: '#EF4444', // Bright red for dark theme visibility
+          darkRed: '#DC2626', // Red for hover states
+          brightRed: '#F87171', // Even brighter red for emphasis
+          black: '#000000', // Pure black background
+          white: '#FFFFFF', // Pure white for text
           gray: {
-            50: '#F9FAFB',
-            100: '#F3F4F6',
-            200: '#E5E7EB',
-            300: '#D1D5DB',
-            400: '#9CA3AF',
-            500: '#6B7280',
-            600: '#4B5563',
-            700: '#374151',
-            800: '#1F2937',
-            900: '#111827',
+            50: '#1A1A1A', // Very dark gray for cards
+            100: '#262626', // Dark gray for hover states
+            200: '#333333', // Medium dark gray
+            300: '#404040', // Lighter dark gray for borders
+            400: '#525252', // Mid gray
+            500: '#737373', // Lighter mid gray
+            600: '#A3A3A3', // Light gray for secondary text
+            700: '#D4D4D4', // Very light gray
+            800: '#E5E5E5', // Near white
+            900: '#F5F5F5', // Almost white
           }
         },
         // Keep old colors for admin panel

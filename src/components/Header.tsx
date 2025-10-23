@@ -12,7 +12,7 @@ const Header: React.FC<HeaderProps> = ({ cartItemsCount, onCartClick, onMenuClic
   const { siteSettings, loading } = useSiteSettings();
 
   return (
-    <header className="sticky top-0 z-50 bg-white border-b-2 border-primos-red shadow-lg">
+    <header className="sticky top-0 z-50 bg-primos-black border-b-2 border-primos-red shadow-2xl">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <button 
@@ -20,12 +20,12 @@ const Header: React.FC<HeaderProps> = ({ cartItemsCount, onCartClick, onMenuClic
             className="flex items-center space-x-3 hover:opacity-80 transition-opacity duration-200"
           >
             {loading ? (
-              <div className="w-12 h-12 bg-gray-200 rounded-full animate-pulse" />
+              <div className="w-12 h-12 bg-primos-gray-100 rounded-full animate-pulse" />
             ) : (
               <img 
                 src={siteSettings?.site_logo || "/logo.jpg"} 
                 alt={siteSettings?.site_name || "Primos' Pares"}
-                className="w-12 h-12 rounded-full object-cover"
+                className="w-12 h-12 rounded-full object-cover ring-2 ring-primos-red"
                 onError={(e) => {
                   e.currentTarget.src = "/logo.jpg";
                 }}
@@ -33,7 +33,7 @@ const Header: React.FC<HeaderProps> = ({ cartItemsCount, onCartClick, onMenuClic
             )}
             <h1 className="text-3xl font-display font-bold text-primos-red">
               {loading ? (
-                <div className="w-32 h-8 bg-gray-200 rounded animate-pulse" />
+                <div className="w-32 h-8 bg-primos-gray-100 rounded animate-pulse" />
               ) : (
                 "PRIMOS' PARES"
               )}
@@ -43,7 +43,7 @@ const Header: React.FC<HeaderProps> = ({ cartItemsCount, onCartClick, onMenuClic
           <div className="flex items-center space-x-2">
             <button 
               onClick={onCartClick}
-              className="relative p-3 text-primos-black hover:bg-primos-gray-100 rounded-full transition-all duration-200"
+              className="relative p-3 text-primos-white hover:bg-primos-gray-50 rounded-full transition-all duration-200"
             >
               <ShoppingCart className="h-7 w-7" />
               {cartItemsCount > 0 && (

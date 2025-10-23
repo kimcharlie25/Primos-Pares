@@ -29,7 +29,7 @@ function MainApp() {
     : menuItems.filter(item => item.category === selectedCategory);
 
   return (
-    <div className="min-h-screen bg-white font-sans">
+    <div className="min-h-screen bg-primos-black font-sans">
       <Header 
         cartItemsCount={cart.getTotalItems()}
         onCartClick={() => handleViewChange('cart')}

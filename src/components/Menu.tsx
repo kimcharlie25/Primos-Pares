@@ -86,7 +86,7 @@ const Menu: React.FC<MenuProps> = ({ menuItems, addToCart, cartItems, updateQuan
 
   return (
     <>
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 bg-white">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 bg-primos-black">
       <div className="text-center mb-16">
         <h2 className="text-5xl font-display font-bold text-primos-red mb-4">OUR MENU</h2>
         <p className="text-primos-gray-600 text-lg font-medium max-w-2xl mx-auto">
@@ -104,7 +104,7 @@ const Menu: React.FC<MenuProps> = ({ menuItems, addToCart, cartItems, updateQuan
           <section key={category.id} id={category.id} className="mb-20">
             <div className="flex items-center mb-8 pb-4 border-b-4 border-primos-red">
               <span className="text-4xl mr-4">{category.icon}</span>
-              <h3 className="text-4xl font-display font-bold text-primos-black uppercase">{category.name}</h3>
+              <h3 className="text-4xl font-display font-bold text-primos-white uppercase">{category.name}</h3>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
