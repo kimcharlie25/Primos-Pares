@@ -211,6 +211,18 @@ Please confirm this order to proceed. Thank you for choosing Primos' Pares ! �
                     </button>
                   ))}
                 </div>
+                
+                {/* Delivery Reminder */}
+                {serviceType === 'delivery' && (
+                  <div className="mt-4 bg-yellow-900/30 border-2 border-yellow-600 rounded-lg p-4">
+                    <p className="text-sm font-bold text-yellow-400">
+                      ⚠️ Pa-remind lang, Primo!
+                    </p>
+                    <p className="text-xs font-medium text-yellow-300 mt-2 leading-relaxed">
+                      Yung delivery charge ay hiwalay pa sa total bill, at magbabago depende sa location mo. I-confirm namin 'to sayo bago i-deliver ang order mo.
+                    </p>
+                  </div>
+                )}
               </div>
 
               {/* Dine-in Details */}
