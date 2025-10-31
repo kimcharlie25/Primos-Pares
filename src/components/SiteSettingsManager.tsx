@@ -11,7 +11,8 @@ const SiteSettingsManager: React.FC = () => {
     site_name: '',
     site_description: '',
     currency: '',
-    currency_code: ''
+    currency_code: '',
+    store_open: true
   });
   const [logoFile, setLogoFile] = useState<File | null>(null);
   const [logoPreview, setLogoPreview] = useState<string>('');
@@ -22,7 +23,8 @@ const SiteSettingsManager: React.FC = () => {
         site_name: siteSettings.site_name,
         site_description: siteSettings.site_description,
         currency: siteSettings.currency,
-        currency_code: siteSettings.currency_code
+        currency_code: siteSettings.currency_code,
+        store_open: siteSettings.store_open
       });
       setLogoPreview(siteSettings.site_logo);
     }
@@ -64,7 +66,8 @@ const SiteSettingsManager: React.FC = () => {
         site_description: formData.site_description,
         currency: formData.currency,
         currency_code: formData.currency_code,
-        site_logo: logoUrl
+        site_logo: logoUrl,
+        store_open: formData.store_open
       });
 
       setIsEditing(false);
@@ -137,6 +140,29 @@ const SiteSettingsManager: React.FC = () => {
       </div>
 
       <div className="space-y-6">
+        {/* Store Status Toggle */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Store Status
+          </label>
+          {isEditing ? (
+            <button
+              type="button"
+              onClick={() => setFormData(prev => ({ ...prev, store_open: !prev.store_open }))}
+              className={`relative inline-flex h-8 w-16 items-center rounded-full transition-colors duration-200 ${formData.store_open ? 'bg-green-500' : 'bg-gray-300'}`}
+            >
+              <span
+                className={`inline-block h-6 w-6 transform rounded-full bg-white transition-transform duration-200 ${formData.store_open ? 'translate-x-8' : 'translate-x-1'}`}
+              />
+              <span className="sr-only">Toggle store status</span>
+            </button>
+          ) : (
+            <p className={`text-sm font-semibold ${siteSettings?.store_open ? 'text-green-600' : 'text-red-600'}`}>
+              {siteSettings?.store_open ? 'Open' : 'Closed'}
+            </p>
+          )}
+        </div>
+
         {/* Site Logo */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">

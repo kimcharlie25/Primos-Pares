@@ -1,6 +1,7 @@
 import React from 'react';
 import { MenuItem, CartItem } from '../types';
 import { useCategories } from '../hooks/useCategories';
+import { useSiteSettings } from '../hooks/useSiteSettings';
 import MenuItemCard from './MenuItemCard';
 
 // Preload images for better performance
@@ -23,6 +24,7 @@ interface MenuProps {
 const Menu: React.FC<MenuProps> = ({ menuItems, addToCart, cartItems, updateQuantity }) => {
   const { categories } = useCategories();
   const [activeCategory, setActiveCategory] = React.useState('hot-coffee');
+  const { siteSettings } = useSiteSettings();
 
   // Preload images when menu items change
   React.useEffect(() => {
@@ -86,7 +88,7 @@ const Menu: React.FC<MenuProps> = ({ menuItems, addToCart, cartItems, updateQuan
 
   return (
     <>
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 bg-primos-black">
+      <main className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 bg-primos-black">
       <div className="text-center mb-16">
         <h2 className="text-5xl font-display font-bold text-primos-red mb-4">OUR MENU</h2>
         <p className="text-primos-gray-600 text-lg font-medium max-w-2xl mx-auto">
@@ -124,6 +126,15 @@ const Menu: React.FC<MenuProps> = ({ menuItems, addToCart, cartItems, updateQuan
           </section>
         );
       })}
+        {/* Closed Modal Overlay */}
+        {siteSettings && siteSettings.store_open === false && (
+          <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/70">
+            <div className="bg-primos-gray-50 border-2 border-primos-red rounded-xl p-8 max-w-md text-center shadow-2xl shadow-primos-red/30">
+              <h3 className="text-2xl font-display font-bold text-primos-red mb-3">Our restaurant is currently closed.</h3>
+              <p className="text-primos-white font-medium">Please check back later. Thank you for your understanding!</p>
+            </div>
+          </div>
+        )}
       </main>
     </>
   );

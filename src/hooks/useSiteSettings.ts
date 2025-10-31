@@ -25,7 +25,8 @@ export const useSiteSettings = () => {
         site_logo: data.find(s => s.id === 'site_logo')?.value || '',
         site_description: data.find(s => s.id === 'site_description')?.value || '',
         currency: data.find(s => s.id === 'currency')?.value || 'PHP',
-        currency_code: data.find(s => s.id === 'currency_code')?.value || 'PHP'
+        currency_code: data.find(s => s.id === 'currency_code')?.value || 'PHP',
+        store_open: (data.find(s => s.id === 'store_open')?.value ?? 'true') === 'true'
       };
 
       setSiteSettings(settings);
@@ -37,14 +38,13 @@ export const useSiteSettings = () => {
     }
   };
 
-  const updateSiteSetting = async (id: string, value: string) => {
+  const updateSiteSetting = async (id: string, value: string | number | boolean) => {
     try {
       setError(null);
 
       const { error } = await supabase
         .from('site_settings')
-        .update({ value })
-        .eq('id', id);
+        .upsert({ id, value: String(value) }, { onConflict: 'id' });
 
       if (error) throw error;
 
@@ -64,8 +64,7 @@ export const useSiteSettings = () => {
       const updatePromises = Object.entries(updates).map(([key, value]) =>
         supabase
           .from('site_settings')
-          .update({ value })
-          .eq('id', key)
+          .upsert({ id: key, value: String(value) }, { onConflict: 'id' })
       );
 
       const results = await Promise.all(updatePromises);
