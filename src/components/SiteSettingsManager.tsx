@@ -12,7 +12,8 @@ const SiteSettingsManager: React.FC = () => {
     site_description: '',
     currency: '',
     currency_code: '',
-    store_open: true
+    store_open: true,
+    closed_message: ''
   });
   const [logoFile, setLogoFile] = useState<File | null>(null);
   const [logoPreview, setLogoPreview] = useState<string>('');
@@ -24,7 +25,8 @@ const SiteSettingsManager: React.FC = () => {
         site_description: siteSettings.site_description,
         currency: siteSettings.currency,
         currency_code: siteSettings.currency_code,
-        store_open: siteSettings.store_open
+        store_open: siteSettings.store_open,
+        closed_message: siteSettings.closed_message
       });
       setLogoPreview(siteSettings.site_logo);
     }
@@ -67,7 +69,8 @@ const SiteSettingsManager: React.FC = () => {
         currency: formData.currency,
         currency_code: formData.currency_code,
         site_logo: logoUrl,
-        store_open: formData.store_open
+        store_open: formData.store_open,
+        closed_message: formData.closed_message
       });
 
       setIsEditing(false);
@@ -83,7 +86,9 @@ const SiteSettingsManager: React.FC = () => {
         site_name: siteSettings.site_name,
         site_description: siteSettings.site_description,
         currency: siteSettings.currency,
-        currency_code: siteSettings.currency_code
+        currency_code: siteSettings.currency_code,
+        store_open: siteSettings.store_open,
+        closed_message: siteSettings.closed_message
       });
       setLogoPreview(siteSettings.site_logo);
     }
@@ -160,6 +165,25 @@ const SiteSettingsManager: React.FC = () => {
             <p className={`text-sm font-semibold ${siteSettings?.store_open ? 'text-green-600' : 'text-red-600'}`}>
               {siteSettings?.store_open ? 'Open' : 'Closed'}
             </p>
+          )}
+        </div>
+
+        {/* Closed Message */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Closed Message
+          </label>
+          {isEditing ? (
+            <textarea
+              name="closed_message"
+              value={formData.closed_message}
+              onChange={handleInputChange}
+              rows={2}
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+              placeholder="Message shown when store is closed"
+            />
+          ) : (
+            <p className="text-gray-600">{siteSettings?.closed_message}</p>
           )}
         </div>
 

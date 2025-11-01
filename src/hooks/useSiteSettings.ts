@@ -26,7 +26,8 @@ export const useSiteSettings = () => {
         site_description: data.find(s => s.id === 'site_description')?.value || '',
         currency: data.find(s => s.id === 'currency')?.value || 'PHP',
         currency_code: data.find(s => s.id === 'currency_code')?.value || 'PHP',
-        store_open: (data.find(s => s.id === 'store_open')?.value ?? 'true') === 'true'
+        store_open: (data.find(s => s.id === 'store_open')?.value ?? 'true') === 'true',
+        closed_message: data.find(s => s.id === 'closed_message')?.value || 'Please check back later. Thank you for your understanding!'
       };
 
       setSiteSettings(settings);

@@ -75,4 +75,5 @@ export interface SiteSettings {
   currency: string;
   currency_code: string;
   store_open: boolean;
+  closed_message: string;
 }

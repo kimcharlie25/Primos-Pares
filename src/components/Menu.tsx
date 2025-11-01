@@ -138,7 +138,7 @@ const Menu: React.FC<MenuProps> = ({ menuItems, addToCart, cartItems, updateQuan
           <div className="fixed inset-0 z-50 flex items-start justify-center bg-black/70 pt-24">
             <div className="bg-primos-gray-50 border-2 border-primos-red rounded-xl p-8 max-w-md text-center shadow-2xl shadow-primos-red/30">
               <h3 className="text-2xl font-display font-bold text-primos-red mb-3">Our restaurant is currently closed.</h3>
-              <p className="text-primos-white font-medium">Please check back later. Thank you for your understanding!</p>
+              <p className="text-primos-white font-medium">{siteSettings.closed_message}</p>
             </div>
           </div>
         )}
